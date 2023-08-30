@@ -11,14 +11,14 @@ subparsers = parser.add_subparsers(title="Subcommands", required=True, dest="sub
 # Transcribe directly from the microphone
 microphone = subparsers.add_parser("microphone", description="Generate notes directly from the microphone")
 
-audiofile = subparsers.add_parser("filename", description="Generate notes from an audio file")
+audiofile = subparsers.add_parser("file", description="Generate notes from an audio file")
 audiofile.add_argument("filename", help="The audio file to transcribe")
 
 args = parser.parse_args()
 
 if args.subcommand == "microphone":
     audio_data = buffer_audio()
-elif args.subcommand == "filename":
+elif args.subcommand == "file":
     audio_data = convert_audio_to_pcm(args.filename)
 
 print("Transcribing...")
